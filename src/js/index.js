@@ -5,6 +5,4 @@ import '../styles/app.scss';
 
 const container = document.getElementById('lSystemContainer');
 
-ReactDOM.render((
-  <App />
-), container);
+ReactDOM.render(<App />, container);
