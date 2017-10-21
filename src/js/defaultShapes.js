@@ -166,6 +166,58 @@ const defaultShapes = {
     startY: 240,
     startAngle: 0,
     preset: 'dragonCurve'
+  },
+  triangleVarient: {
+    symbols: [
+      {
+        name: 'x',
+        operation: 'move',
+        amount: 1,
+        productionRules: 'y[+x][-x]x',
+        id: shortid.generate()
+      },
+      {
+        name: 'y',
+        operation: 'move',
+        amount: 1,
+        productionRules: 'yy',
+        id: shortid.generate()
+      },
+      {
+        name: '+',
+        operation: 'rotate',
+        amount: 120,
+        productionRules: '+',
+        id: shortid.generate()
+      },
+      {
+        name: '-',
+        operation: 'rotate',
+        amount: -120,
+        productionRules: '-',
+        id: shortid.generate()
+      },
+      {
+        name: '[',
+        operation: 'startBranch',
+        amount: 0,
+        productionRules: '[',
+        id: shortid.generate()
+      },
+      {
+        name: ']',
+        operation: 'endBranch',
+        amount: 0,
+        productionRules: ']',
+        id: shortid.generate()
+      }
+    ],
+    axiom: '[+x][-x]x',
+    iterations: 8,
+    startX: 400,
+    startY: 300,
+    startAngle: -90,
+    preset: 'triangleVarient'
   }
 };
 

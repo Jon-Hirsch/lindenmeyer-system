@@ -65,6 +65,7 @@ export default function App({ state }) {
             <option value="triangle">Sierpinski Triangle</option>
             <option value="snowflake">Koch Snowflake</option>
             <option value="dragonCurve">Dragon Curve</option>
+            <option value="triangleVarient">Sierpinski Triangle Varient</option>
           </select>
         </div>
       </div>
