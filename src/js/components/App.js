@@ -63,6 +63,8 @@ export default function App({ state }) {
           >
             <option value="plant">Plant</option>
             <option value="triangle">Sierpinski Triangle</option>
+            <option value="snowflake">Koch Snowflake</option>
+            <option value="dragonCurve">Dragon Curve</option>
           </select>
         </div>
       </div>

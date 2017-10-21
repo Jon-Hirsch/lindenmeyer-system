@@ -7,14 +7,14 @@ const defaultShapes = {
         name: 'x',
         operation: 'move',
         amount: 2,
-        productionRules: 'f-[[x]+x]+f[+fx]-x',
+        productionRules: 'y-[[x]+x]+y[+yx]-x',
         id: shortid.generate()
       },
       {
-        name: 'f',
+        name: 'y',
         operation: 'move',
         amount: 2,
-        productionRules: 'ff',
+        productionRules: 'yy',
         id: shortid.generate()
       },
       {
@@ -90,6 +90,82 @@ const defaultShapes = {
     startY: 20,
     startAngle: 0,
     preset: 'triangle'
+  },
+  snowflake: {
+    symbols: [
+      {
+        name: 'x',
+        operation: 'move',
+        amount: 5,
+        productionRules: 'x+x--x+x',
+        id: shortid.generate()
+      },
+      {
+        name: '+',
+        operation: 'rotate',
+        amount: 60,
+        productionRules: '+',
+        id: shortid.generate()
+      },
+      {
+        name: '-',
+        operation: 'rotate',
+        amount: -60,
+        productionRules: '-',
+        id: shortid.generate()
+      }
+    ],
+    axiom: '+x--x--x',
+    iterations: 4,
+    startX: 200,
+    startY: 122,
+    startAngle: 0,
+    preset: 'snowflake'
+  },
+  dragonCurve: {
+    symbols: [
+      {
+        name: 'x',
+        operation: 'none',
+        amount: 0,
+        productionRules: 'x+yf+',
+        id: shortid.generate()
+      },
+      {
+        name: 'y',
+        operation: 'none',
+        amount: 0,
+        productionRules: '-fx-y',
+        id: shortid.generate()
+      },
+      {
+        name: 'f',
+        operation: 'move',
+        amount: 5,
+        productionRules: 'f',
+        id: shortid.generate()
+      },
+      {
+        name: '+',
+        operation: 'rotate',
+        amount: 90,
+        productionRules: '+',
+        id: shortid.generate()
+      },
+      {
+        name: '-',
+        operation: 'rotate',
+        amount: -90,
+        productionRules: '-',
+        id: shortid.generate()
+      }
+    ],
+    axiom: 'xf',
+    iterations: 10,
+    startX: 400,
+    startY: 240,
+    startAngle: 0,
+    preset: 'dragonCurve'
   }
 };
 
