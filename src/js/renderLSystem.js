@@ -47,6 +47,8 @@ function drawSequence(sequence, symbols, startX, startY, startAngle, context) {
   sequence.split('').forEach(symbolName => {
     let symbol = symbolMap[symbolName];
 
+    if (!symbol) return;
+
     switch (symbol.operation) {
       case 'move':
         currentX += Math.cos(currentAngle) * symbol.amount;
