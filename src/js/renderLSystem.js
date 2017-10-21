@@ -7,8 +7,9 @@ export default function renderLSystem(
   startAngle,
   context
 ) {
+  const angleInRadians = startAngle * (Math.PI / 180);
   const sequence = generateSequence(symbols, axiom, iterations);
-  drawSequence(sequence, symbols, startX, startY, startAngle, context);
+  drawSequence(sequence, symbols, startX, startY, angleInRadians, context);
 }
 
 function generateSequence(symbols, axiom, iterations) {

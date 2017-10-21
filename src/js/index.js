@@ -1,8 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import rootReducer from './reducers/rootReducer';
 import App from './components/App';
 import '../styles/app.scss';
 import renderLSystem from './renderLSystem';
+import dispatch, { initDispatch } from './dispatch';
 
 document.addEventListener('DOMContentLoaded', initLSystem);
 
@@ -16,15 +19,30 @@ function initLSystem() {
   container.appendChild(canvas);
   container.appendChild(controlsContainer);
 
-  ReactDOM.render(<App />, controlsContainer);
+  const store = createStore(
+    rootReducer,
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  );
 
-  const symbols = [];
-  symbols.push({ name: 'x', operation: 'move', amount: 2, productionRules: 'f-[[x]+x]+f[+fx]-x' });
-  symbols.push({ name: 'f', operation: 'move', amount: 2, productionRules: 'ff' });
-  symbols.push({ name: '+', operation: 'rotate', amount: 25, productionRules: '+' });
-  symbols.push({ name: '-', operation: 'rotate', amount: -25, productionRules: '-' });
-  symbols.push({ name: '[', operation: 'startBranch', amount: '', productionRules: '[' });
-  symbols.push({ name: ']', operation: 'endBranch', amount: '', productionRules: ']' });
+  store.subscribe(() => {
+    const state = store.getState();
+    ReactDOM.render(<App state={state} />, controlsContainer);
+    const { symbols, axiom, iterations, startX, startY, startAngle } = state;
+    renderLSystem(
+      symbols,
+      axiom,
+      iterations,
+      startX,
+      startY,
+      startAngle,
+      context
+    );
+  });
 
-  renderLSystem(symbols, 'x', 6, 400, 400, -0.5 * Math.PI, context);
+  initDispatch(store);
+
+  dispatch({
+    type: 'SELECT_DEFAULT_SHAPE',
+    shape: 'plant'
+  });
 }

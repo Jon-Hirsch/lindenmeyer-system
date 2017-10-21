@@ -1,3 +1,56 @@
-h1 {
-  color: blue;
+#lSystemContainer {
+  width: 800px;
+  padding: 10px;
+  background-color: #202020;
+  color: #FFF;
+  input, select {
+    font-size: 16px;
+  }
+
+  canvas {
+    border: solid #FFF 1px;
+  }
+
+  .lindenmeyer-system-button {
+    padding: 4px;
+    display: inline-block;
+    font-family: sans-serif;
+    border-radius: 3px;
+    text-align: center;
+    margin-left: 5px;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .add-symbol-button {
+    margin-top: 5px;
+    background-color: #0B0;
+    &:active {
+      background-color: #090;
+    }
+  }
+
+  .lindenmeyer-system-start-settings {
+    display: flex;
+    &> div {
+      width: 33%;
+    }
+    input {
+      width: 125px;
+    }
+  }
+
+  .lindenmeyer-system-symbol {
+    padding: 5px;
+    .symbol-name, .symbol-amount {
+      width: 25px;
+    }
+
+    .delete-symbol-button {
+      background-color: #D00;
+      &:active {
+        background-color: #A00;
+      }
+    }
+  }
 }
