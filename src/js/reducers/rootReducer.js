@@ -13,17 +13,16 @@ export default function rootReducer(state = defaultState, action) {
       return Object.assign({}, state, { symbols });
     }
     case 'ADD_SYMBOL': {
-      const symbols = state.symbols.concat([{
-        name: '',
-        operation: 'none',
-        amount: 0,
-        productionRules: '',
-        id: shortid.generate()
-      }]);
+      const symbols = state.symbols.concat([
+        {
+          name: '',
+          operation: 'none',
+          amount: 0,
+          productionRules: '',
+          id: shortid.generate()
+        }
+      ]);
       return Object.assign({}, state, { symbols });
-    }
-    default: {
-      return state;
     }
     case 'UPDATE_SETTING': {
       return Object.assign({}, state, { [action.setting]: action.value });
@@ -31,8 +30,13 @@ export default function rootReducer(state = defaultState, action) {
     case 'UPDATE_SYMBOL_SETTING': {
       const symbols = state.symbols.slice(0);
       const index = symbols.findIndex(symbol => symbol.id === action.id);
-      symbols[index] = Object.assign({}, symbols[index], { [action.setting]: action.value });
+      symbols[index] = Object.assign({}, symbols[index], {
+        [action.setting]: action.value
+      });
       return Object.assign({}, state, { symbols });
+    }
+    default: {
+      return state;
     }
   }
 }

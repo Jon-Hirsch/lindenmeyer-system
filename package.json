@@ -9,10 +9,10 @@
     "url": "git@github.com:Jon-Hirsch/lindenmeyer-system.git"
   },
   "scripts": {
-    "jest": "jest -c tests/jest.config.json",
+    "jest": "jest -c ./jest.config.json",
     "test": "yarn jest",
-    "test:watch": "yarn jest -- --watch",
-    "test:coverage": "yarn jest -- --coverage",
+    "test:watch": "yarn jest --watch",
+    "test:coverage": "yarn jest --coverage",
     "lint": "eslint -c eslint.config.json . --ext .js",
     "lint:fix": "eslint -c eslint.config.json . --ext .js --fix",
     "start": "webpack-dev-server"

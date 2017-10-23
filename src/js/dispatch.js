@@ -1,9 +1,9 @@
 let dispatch;
 
-export default function (action) {
+export default function(action) {
   return dispatch(action);
-};
+}
 
-export function initDispatch(store) {
-  dispatch = store.dispatch;
+export function initDispatch(newDispatch) {
+  dispatch = newDispatch;
 }

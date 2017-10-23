@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Symbol should match snapshot 1`] = `
+<div
+  className="lindenmeyer-system-symbol"
+>
+  Name:
+   
+  <input
+    className="symbol-name"
+    maxLength={1}
+    onChange={[Function]}
+    type="text"
+    value="x"
+  />
+   
+  | Operation:
+   
+  <select
+    onChange={[Function]}
+    value="none"
+  >
+    <option
+      value="none"
+    >
+      None
+    </option>
+    <option
+      value="move"
+    >
+      Move Foward
+    </option>
+    <option
+      value="rotate"
+    >
+      Rotate
+    </option>
+    <option
+      value="startBranch"
+    >
+      Start Branch
+    </option>
+    <option
+      value="endBranch"
+    >
+      End Branch
+    </option>
+  </select>
+   
+   
+  | Production Rules:
+   
+  <input
+    className="symbol-rules"
+    onChange={[Function]}
+    type="text"
+    value="+y-x-y+"
+  />
+</div>
+`;

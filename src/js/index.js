@@ -5,11 +5,11 @@ import rootReducer from './reducers/rootReducer';
 import App from './components/App';
 import '../styles/app.scss';
 import renderLSystem from './renderLSystem';
-import dispatch, { initDispatch } from './dispatch';
+import { initDispatch } from './dispatch';
 
 document.addEventListener('DOMContentLoaded', initLSystem);
 
-function initLSystem() {
+export default function initLSystem() {
   const container = document.getElementById('lSystemContainer');
   const controlsContainer = document.createElement('div');
   const canvas = document.createElement('canvas');
@@ -39,9 +39,9 @@ function initLSystem() {
     );
   });
 
-  initDispatch(store);
+  initDispatch(store.dispatch);
 
-  dispatch({
+  store.dispatch({
     type: 'SELECT_DEFAULT_SHAPE',
     shape: 'plant'
   });

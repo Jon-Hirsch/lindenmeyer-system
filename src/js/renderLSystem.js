@@ -29,9 +29,9 @@ function generateSequence(symbols, axiom, iterations) {
 }
 
 function drawSequence(sequence, symbols, startX, startY, startAngle, context) {
-  let currentX = startX;
-  let currentY = startY;
-  let currentAngle = startAngle;
+  let currentX = isNaN(startX) ? 0 : +startX;
+  let currentY = isNaN(startY) ? 0 : +startY;
+  let currentAngle = isNaN(startAngle) ? 0 : +startAngle;
   let branches = [];
   context.strokeStyle = '#fff';
   context.fillStyle = '#202020';
@@ -49,14 +49,16 @@ function drawSequence(sequence, symbols, startX, startY, startAngle, context) {
 
     if (!symbol) return;
 
+    const amount = isNaN(symbol.amount) ? 0 : +symbol.amount;
+
     switch (symbol.operation) {
       case 'move':
-        currentX += Math.cos(currentAngle) * symbol.amount;
-        currentY += Math.sin(currentAngle) * symbol.amount;
+        currentX += Math.cos(currentAngle) * amount;
+        currentY += Math.sin(currentAngle) * amount;
         context.lineTo(currentX, currentY);
         break;
       case 'rotate':
-        currentAngle += symbol.amount * Math.PI / 180;
+        currentAngle += amount * Math.PI / 180;
         break;
       case 'startBranch':
         branches.push({ x: currentX, y: currentY, angle: currentAngle });

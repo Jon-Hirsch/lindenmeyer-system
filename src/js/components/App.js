@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Symbol from './Symbol';
 import dispatch from '../dispatch';
 
@@ -12,6 +13,7 @@ export default function App({ state }) {
     startAngle,
     preset
   } = state;
+
   return (
     <div>
       <h3>Symbols</h3>
@@ -29,9 +31,9 @@ export default function App({ state }) {
           <h3>Axiom (Start Value)</h3>
           Axiom:{' '}
           <input
+            className="lindenmeyer-system-axiom"
             value={axiom}
-            onChange={({ target: { value } }) =>
-              updateSetting('axiom', value)}
+            onChange={({ target: { value } }) => updateSetting('axiom', value)}
           />
         </div>
         <div>
@@ -39,25 +41,28 @@ export default function App({ state }) {
           <div>
             X:{' '}
             <input
+              className="lindenmeyer-system-x"
               type="text"
               value={startX}
               onChange={({ target: { value } }) =>
-                updateSetting('startX', value, true)}
+                updateSetting('startX', value)}
             />
           </div>
           <div>
             Y:{' '}
             <input
+              className="lindenmeyer-system-y"
               type="text"
               value={startY}
               onChange={({ target: { value } }) =>
-                updateSetting('startY', value, true)}
+                updateSetting('startY', value)}
             />
           </div>
         </div>
         <div>
           <h3>Presets</h3>
           <select
+            className="lindenmeyer-system-presets"
             value={preset}
             onChange={({ target: { value } }) => updatePreset(value)}
           >
@@ -65,7 +70,7 @@ export default function App({ state }) {
             <option value="triangle">Sierpinski Triangle</option>
             <option value="snowflake">Koch Snowflake</option>
             <option value="dragonCurve">Dragon Curve</option>
-            <option value="triangleVarient">Sierpinski Triangle Varient</option>
+            <option value="triangleVariant">Sierpinski Triangle Variant</option>
           </select>
         </div>
       </div>
@@ -78,7 +83,7 @@ export default function App({ state }) {
             className="lindenmeyer-system-iterations"
             value={iterations}
             onChange={({ target: { value } }) =>
-              updateSetting('iterations', value, true)}
+              updateSetting('iterations', value)}
           />
         </div>
         <div>
@@ -88,7 +93,7 @@ export default function App({ state }) {
             type="text"
             className="lindenmeyer-system-angle"
             onChange={({ target: { value } }) =>
-              updateSetting('startAngle', value, true)}
+              updateSetting('startAngle', value)}
             value={startAngle}
           />
         </div>
@@ -104,9 +109,7 @@ function addSymbol() {
   });
 }
 
-function updateSetting(setting, value, isNumeric) {
-  if (isNumeric && value) value = +value;
-  if (isNumeric && isNaN(value)) value = 0;
+function updateSetting(setting, value) {
   dispatch({
     type: 'UPDATE_SETTING',
     setting,
@@ -120,3 +123,23 @@ function updatePreset(value) {
     shape: value
   });
 }
+
+App.propTypes = {
+  state: PropTypes.shape({
+    symbols: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string.isRequired,
+        operation: PropTypes.string.isRequired,
+        amount: PropTypes.string.isRequired,
+        productionRules: PropTypes.string.isRequired,
+        id: PropTypes.string.isRequired
+      })
+    ).isRequired,
+    axiom: PropTypes.string.isRequired,
+    iterations: PropTypes.string.isRequired,
+    startX: PropTypes.string.isRequired,
+    startY: PropTypes.string.isRequired,
+    startAngle: PropTypes.string.isRequired,
+    preset: PropTypes.string.isRequired
+  }).isRequired
+};

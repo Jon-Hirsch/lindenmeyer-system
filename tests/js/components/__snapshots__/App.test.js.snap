@@ -1,0 +1,155 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App should match snapshot 1`] = `
+<div>
+  <h3>
+    Symbols
+  </h3>
+  <_Symbol
+    amount="2"
+    firstSymbol={true}
+    id="1"
+    name="x"
+    operation="move"
+    productionRules="+y-x-y+"
+  />
+  <_Symbol
+    amount="2"
+    firstSymbol={false}
+    id="2"
+    name="y"
+    operation="move"
+    productionRules="-x+y+x-"
+  />
+  <_Symbol
+    amount="60"
+    firstSymbol={false}
+    id="3"
+    name="+"
+    operation="rotate"
+    productionRules="+"
+  />
+  <_Symbol
+    amount="-60"
+    firstSymbol={false}
+    id="4"
+    name="-"
+    operation="rotate"
+    productionRules="-"
+  />
+  <div
+    className="lindenmeyer-system-button add-symbol-button"
+    onClick={[Function]}
+  >
+    Add Symbol
+  </div>
+  <div
+    className="lindenmeyer-system-start-settings"
+  >
+    <div>
+      <h3>
+        Axiom (Start Value)
+      </h3>
+      Axiom:
+       
+      <input
+        className="lindenmeyer-system-axiom"
+        onChange={[Function]}
+        value="x"
+      />
+    </div>
+    <div>
+      <h3>
+        Position
+      </h3>
+      <div>
+        X:
+         
+        <input
+          className="lindenmeyer-system-x"
+          onChange={[Function]}
+          type="text"
+          value="150"
+        />
+      </div>
+      <div>
+        Y:
+         
+        <input
+          className="lindenmeyer-system-y"
+          onChange={[Function]}
+          type="text"
+          value="20"
+        />
+      </div>
+    </div>
+    <div>
+      <h3>
+        Presets
+      </h3>
+      <select
+        className="lindenmeyer-system-presets"
+        onChange={[Function]}
+        value="triangle"
+      >
+        <option
+          value="plant"
+        >
+          Plant
+        </option>
+        <option
+          value="triangle"
+        >
+          Sierpinski Triangle
+        </option>
+        <option
+          value="snowflake"
+        >
+          Koch Snowflake
+        </option>
+        <option
+          value="dragonCurve"
+        >
+          Dragon Curve
+        </option>
+        <option
+          value="triangleVariant"
+        >
+          Sierpinski Triangle Variant
+        </option>
+      </select>
+    </div>
+  </div>
+  <div
+    className="lindenmeyer-system-start-settings"
+  >
+    <div>
+      <h3>
+        Number of Iterations
+      </h3>
+      Iterations:
+       
+      <input
+        className="lindenmeyer-system-iterations"
+        onChange={[Function]}
+        type="text"
+        value="8"
+      />
+    </div>
+    <div>
+      <h3>
+        Starting Angle
+      </h3>
+      Angle:
+       
+      <input
+        className="lindenmeyer-system-angle"
+        onChange={[Function]}
+        type="text"
+        value="0"
+      />
+    </div>
+    <div />
+  </div>
+</div>
+`;

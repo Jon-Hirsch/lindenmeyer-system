@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import dispatch from '../dispatch';
 
 export default function Symbol({
@@ -38,7 +39,7 @@ export default function Symbol({
           className="symbol-amount"
           value={amount}
           onChange={({ target: { value } }) =>
-            updateSetting(id, 'amount', value, true)}
+            updateSetting(id, 'amount', value)}
         />
       )}{' '}
       | Production Rules:{' '}
@@ -68,9 +69,7 @@ function removeSymbol(id) {
   });
 }
 
-function updateSetting(id, setting, value, isNumeric) {
-  if (isNumeric && value) value = +value;
-  if (isNumeric && isNaN(value)) value = 0;
+function updateSetting(id, setting, value) {
   dispatch({
     type: 'UPDATE_SYMBOL_SETTING',
     id,
@@ -78,3 +77,12 @@ function updateSetting(id, setting, value, isNumeric) {
     value
   });
 }
+
+Symbol.propTypes = {
+  name: PropTypes.string.isRequired,
+  operation: PropTypes.string.isRequired,
+  amount: PropTypes.string.isRequired,
+  productionRules: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
+  firstSymbol: PropTypes.bool.isRequired
+};
