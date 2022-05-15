@@ -4,57 +4,73 @@ exports[`Symbol should match snapshot 1`] = `
 <div
   className="lindenmeyer-system-symbol"
 >
-  Name:
-   
-  <input
-    className="symbol-name"
-    maxLength={1}
-    onChange={[Function]}
-    type="text"
-    value="x"
-  />
-   
-  | Operation:
-   
-  <select
-    onChange={[Function]}
-    value="none"
+  <div
+    className="symbol-section"
   >
-    <option
-      value="none"
-    >
-      None
-    </option>
-    <option
-      value="move"
-    >
-      Move Foward
-    </option>
-    <option
-      value="rotate"
-    >
-      Rotate
-    </option>
-    <option
-      value="startBranch"
-    >
-      Start Branch
-    </option>
-    <option
-      value="endBranch"
-    >
-      End Branch
-    </option>
-  </select>
-   
-   
-  | Production Rules:
-   
-  <input
-    className="symbol-rules"
-    onChange={[Function]}
-    type="text"
-    value="+y-x-y+"
-  />
+    <label>
+      Name:
+       
+      <input
+        className="symbol-name"
+        maxLength={1}
+        onChange={[Function]}
+        type="text"
+        value="x"
+      />
+    </label>
+  </div>
+  <div
+    className="symbol-section"
+  >
+    <label>
+      Operation:
+       
+      <select
+        onChange={[Function]}
+        value="none"
+      >
+        <option
+          value="none"
+        >
+          None
+        </option>
+        <option
+          value="move"
+        >
+          Move Foward
+        </option>
+        <option
+          value="rotate"
+        >
+          Rotate
+        </option>
+        <option
+          value="startBranch"
+        >
+          Start Branch
+        </option>
+        <option
+          value="endBranch"
+        >
+          End Branch
+        </option>
+      </select>
+    </label>
+     
+  </div>
+  <div
+    className="symbol-section"
+  >
+    <label>
+      Production Rules:
+       
+      <input
+        className="symbol-rules"
+        onChange={[Function]}
+        type="text"
+        value="+y-x-y+"
+      />
+    </label>
+  </div>
 </div>
 `;

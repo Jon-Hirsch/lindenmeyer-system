@@ -4,15 +4,8 @@ import Symbol from './Symbol';
 import dispatch from '../dispatch';
 
 export default function App({ state }) {
-  const {
-    symbols,
-    axiom,
-    iterations,
-    startX,
-    startY,
-    startAngle,
-    preset
-  } = state;
+  const { symbols, axiom, iterations, startX, startY, startAngle, preset } =
+    state;
 
   return (
     <div>
@@ -45,7 +38,8 @@ export default function App({ state }) {
               type="text"
               value={startX}
               onChange={({ target: { value } }) =>
-                updateSetting('startX', value)}
+                updateSetting('startX', value)
+              }
             />
           </div>
           <div>
@@ -55,10 +49,39 @@ export default function App({ state }) {
               type="text"
               value={startY}
               onChange={({ target: { value } }) =>
-                updateSetting('startY', value)}
+                updateSetting('startY', value)
+              }
             />
           </div>
         </div>
+      </div>
+      <div className="lindenmeyer-system-start-settings">
+        <div>
+          <h3>Number of Iterations</h3>
+          Iterations:{' '}
+          <input
+            type="text"
+            className="lindenmeyer-system-iterations"
+            value={iterations}
+            onChange={({ target: { value } }) =>
+              updateSetting('iterations', value)
+            }
+          />
+        </div>
+        <div>
+          <h3>Starting Angle</h3>
+          Angle:{' '}
+          <input
+            type="text"
+            className="lindenmeyer-system-angle"
+            onChange={({ target: { value } }) =>
+              updateSetting('startAngle', value)
+            }
+            value={startAngle}
+          />
+        </div>
+      </div>
+      <div className="lindenmeyer-system-start-settings">
         <div>
           <h3>Presets</h3>
           <select
@@ -74,38 +97,13 @@ export default function App({ state }) {
           </select>
         </div>
       </div>
-      <div className="lindenmeyer-system-start-settings">
-        <div>
-          <h3>Number of Iterations</h3>
-          Iterations:{' '}
-          <input
-            type="text"
-            className="lindenmeyer-system-iterations"
-            value={iterations}
-            onChange={({ target: { value } }) =>
-              updateSetting('iterations', value)}
-          />
-        </div>
-        <div>
-          <h3>Starting Angle</h3>
-          Angle:{' '}
-          <input
-            type="text"
-            className="lindenmeyer-system-angle"
-            onChange={({ target: { value } }) =>
-              updateSetting('startAngle', value)}
-            value={startAngle}
-          />
-        </div>
-        <div />
-      </div>
     </div>
   );
 }
 
 function addSymbol() {
   dispatch({
-    type: 'ADD_SYMBOL'
+    type: 'ADD_SYMBOL',
   });
 }
 
@@ -113,14 +111,14 @@ function updateSetting(setting, value) {
   dispatch({
     type: 'UPDATE_SETTING',
     setting,
-    value
+    value,
   });
 }
 
 function updatePreset(value) {
   dispatch({
     type: 'SELECT_PRESET_SHAPE',
-    shape: value
+    shape: value,
   });
 }
 
@@ -132,7 +130,7 @@ App.propTypes = {
         operation: PropTypes.string.isRequired,
         amount: PropTypes.string.isRequired,
         productionRules: PropTypes.string.isRequired,
-        id: PropTypes.string.isRequired
+        id: PropTypes.string.isRequired,
       })
     ).isRequired,
     axiom: PropTypes.string.isRequired,
@@ -140,6 +138,6 @@ App.propTypes = {
     startX: PropTypes.string.isRequired,
     startY: PropTypes.string.isRequired,
     startAngle: PropTypes.string.isRequired,
-    preset: PropTypes.string.isRequired
-  }).isRequired
+    preset: PropTypes.string.isRequired,
+  }).isRequired,
 };

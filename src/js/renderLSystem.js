@@ -5,11 +5,20 @@ export default function renderLSystem(
   startX,
   startY,
   startAngle,
-  context
+  context,
+  scale = 1
 ) {
   const angleInRadians = startAngle * (Math.PI / 180);
   const sequence = generateSequence(symbols, axiom, iterations);
-  drawSequence(sequence, symbols, startX, startY, angleInRadians, context);
+  drawSequence(
+    sequence,
+    symbols,
+    startX,
+    startY,
+    angleInRadians,
+    context,
+    scale
+  );
 }
 
 function generateSequence(symbols, axiom, iterations) {
@@ -28,23 +37,31 @@ function generateSequence(symbols, axiom, iterations) {
   return sequence.slice(0, 100000);
 }
 
-function drawSequence(sequence, symbols, startX, startY, startAngle, context) {
-  let currentX = isNaN(startX) ? 0 : +startX;
-  let currentY = isNaN(startY) ? 0 : +startY;
+function drawSequence(
+  sequence,
+  symbols,
+  startX,
+  startY,
+  startAngle,
+  context,
+  scale
+) {
+  let currentX = isNaN(startX) ? 0 : +startX * scale;
+  let currentY = isNaN(startY) ? 0 : +startY * scale;
   let currentAngle = isNaN(startAngle) ? 0 : +startAngle;
   let branches = [];
   context.strokeStyle = '#fff';
   context.fillStyle = '#202020';
   context.beginPath();
   context.moveTo(currentX, currentY);
-  context.fillRect(0, 0, 800, 480);
+  context.fillRect(0, 0, 800 * scale, 480 * scale);
 
   const symbolMap = symbols.reduce((map, symbol) => {
     map[symbol.name] = symbol;
     return map;
   }, {});
 
-  sequence.split('').forEach(symbolName => {
+  sequence.split('').forEach((symbolName) => {
     let symbol = symbolMap[symbolName];
 
     if (!symbol) return;
@@ -53,12 +70,12 @@ function drawSequence(sequence, symbols, startX, startY, startAngle, context) {
 
     switch (symbol.operation) {
       case 'move':
-        currentX += Math.cos(currentAngle) * amount;
-        currentY += Math.sin(currentAngle) * amount;
+        currentX += Math.cos(currentAngle) * amount * scale;
+        currentY += Math.sin(currentAngle) * amount * scale;
         context.lineTo(currentX, currentY);
         break;
       case 'rotate':
-        currentAngle += amount * Math.PI / 180;
+        currentAngle += (amount * Math.PI) / 180;
         break;
       case 'startBranch':
         branches.push({ x: currentX, y: currentY, angle: currentAngle });

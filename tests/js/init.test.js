@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom';
-import initLSystem from '../../src/js/index';
+import initLSystem from '../../src/js/init';
 import renderLSystem from '../../src/js/renderLSystem';
 import { initDispatch } from '../../src/js/dispatch';
 
